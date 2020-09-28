@@ -1,9 +1,12 @@
 package dao;
 
+import models.Departments;
 import models.News;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import org.sql2o.Sql2oException;
+
+import java.util.List;
 
 public class Sql2onewsDao implements news {
 
@@ -23,6 +26,9 @@ public class Sql2onewsDao implements news {
             System.out.println(ex);
         }
     }
+
+
+    public void addNewsToDepartment(News news, Departments departments){}
 
 
 
