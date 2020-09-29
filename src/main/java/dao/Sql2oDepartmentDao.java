@@ -37,11 +37,11 @@ public class Sql2oDepartmentDao implements department {
 
         @Override
         public void addNewstoDepartment(Departments departments, News news){
-            String sql = "INSERT INTO department_news (departmentid, newsid) VALUES (:departmentid, :newsid)";
+            String sql = "INSERT INTO department_news (newsid) VALUES ( :newsid) WHERE departmentid,= :departmentid,";
             try(Connection conn = sql2o.open()){
                 conn.createQuery(sql)
+                        .addParameter( "newsid", news.getId())
                         .addParameter("departmentid", departments.getId())
-                        .addParameter("newsid", news.getId())
                         .executeUpdate();
             }catch (Sql2oException ex){
                 System.out.println(ex);
@@ -59,10 +59,10 @@ public class Sql2oDepartmentDao implements department {
                         .addParameter("departmentid", departmentid)
                         .executeAndFetch(Integer.class);
                 for (Integer eachNews : allNewsIds){
-                    String newsQuery = "SELECT * FROM news_col WHERE id = :eachNews";
+                    String newsQuery = "SELECT * FROM news_col WHERE id = :id";
                     news.add(
                             con.createQuery(newsQuery)
-                                    .addParameter("eachNews", eachNews)
+                                    .addParameter("id", eachNews)
                                     .executeAndFetchFirst(News.class));
                 }
             } catch (Sql2oException ex){
