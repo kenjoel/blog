@@ -62,7 +62,7 @@ public class Sql2oDepartmentDaoTest {
 
             News news = setupDepartmentNews();
             newsDao.add(news);
-            departmentDao.addNewstoDepartment(news, departments);
+            departmentDao.addNewstoDepartment(departments, news);
             assertEquals(1, departmentDao.getNewsByDepartment(departments.getId()));
         }
 

@@ -8,7 +8,7 @@ import java.util.List;
 public interface department {
     //Create
     void addDepartment(Departments departments);
-    void addNewstoDepartment(News news, Departments departments);
+    void addNewstoDepartment(Departments departments, News news);
 
     //Read
     List<Departments> getAll();

@@ -36,12 +36,12 @@ public class Sql2oDepartmentDao implements department {
 
 
         @Override
-        public void addNewstoDepartment(News news, Departments departments){
-            String sql = "INSERT INTO department_news (newsid, departmentid) VALUES (:newsid, :departmentid)";
+        public void addNewstoDepartment(Departments departments, News news){
+            String sql = "INSERT INTO department_news (departmentid, newsid) VALUES (:departmentid, :newsid)";
             try(Connection conn = sql2o.open()){
                 conn.createQuery(sql)
-                        .addParameter("newsid", news.getId())
                         .addParameter("departmentid", departments.getId())
+                        .addParameter("newsid", news.getId())
                         .executeUpdate();
             }catch (Sql2oException ex){
                 System.out.println(ex);

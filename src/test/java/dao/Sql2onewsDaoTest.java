@@ -95,7 +95,7 @@ public class Sql2onewsDaoTest {
         departmentDao.addDepartment(departments);
 
         newsDao.addNewsToDepartment(testNews, departments);
-        departmentDao.addNewstoDepartment(altNews, departments);
+        departmentDao.addNewstoDepartment(departments, altNews);
 
         assertEquals(2, departmentDao.getNewsByDepartment(departments.getId()).size());
     }
@@ -112,7 +112,7 @@ public class Sql2onewsDaoTest {
         newsDao.add(altNews);
 
         newsDao.addNewsToDepartment(altNews,testDepartment);
-        departmentDao.addNewstoDepartment(news, testDepartment);
+        departmentDao.addNewstoDepartment(testDepartment, news);
 
 //        departmentDao.deleteById(testDepartment.getId());
         assertEquals(0, newsDao.findNewsByDepartmentId(testDepartment.getId()).size());
