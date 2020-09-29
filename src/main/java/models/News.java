@@ -1,80 +1,93 @@
 package models;
 
+import java.util.Date;
 import java.util.Objects;
 
 public class News {
-
+    private String headline;
+    private String content;
+    private String author;
     private int id;
-    private String type;
-    private int department_id;
-    private int userid;
-    private String title;
-    private String includes;
-    private final String NEWS_TYPE="general";
+    private int departmentid; //will be used to connect Department to News (one-to-many)
 
-
-
-    public News(String title, String includes, int userid) {
-        this.title = title;
-        this.includes = includes;
-        this.userid=userid;
-        this.type= NEWS_TYPE;
-        this.department_id=0;
+    public News(String headline, String content, String author, int departmentid) {
+        this.headline = headline;
+        this.content = content;
+        this.author = author;
+        this.departmentid = departmentid;
+         //we'll make me in a minute
     }
 
-    public News(String title, String includes,int department_id, int userid){
-        this.title = title;
-        this.includes = includes;
-        this.userid=userid;
-        this.department_id = department_id;
-        this.type="department";
+    //Create comparison
+
+
+
+    //Hashcode n equals override
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof News)) return false;
+        News news = (News) o;
+        return id == news.id &&
+                departmentid == news.departmentid &&
+                Objects.equals(headline, news.headline) &&
+                Objects.equals(content, news.content) &&
+                Objects.equals(author, news.author);
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(headline, content, author, id, departmentid);
+    }
+
+    //Getters
+
+
+    public String getHeadline() {
+        return headline;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
 
     public int getId() {
         return id;
     }
 
-    public int getUser_id() {
-        return userid;
-    }
-
-    public String getNews_type() {
-        return type;
-    }
-
-    public int getDepartment_id() {
-        return department_id;
-    }
-
-    public String getTitle() {
-        return title;
+    public int getdepartmentid() {
+        return departmentid;
     }
 
 
-    public String getIncludes() {
-        return includes;
+    //Setters
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public void setHeadline(String headline) {
+        this.headline = headline;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
     public void setId(int id) {
         this.id = id;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        News news = (News) o;
-        return id == news.id &&
-                department_id == news.department_id &&
-                userid == news.userid &&
-                Objects.equals(news, news.type) &&
-                Objects.equals(title, news.title) &&
-                Objects.equals(includes, news.includes) &&
-                Objects.equals(NEWS_TYPE, news.NEWS_TYPE);
+    public void setdepartmentid(int departmentid) {
+        this.departmentid = departmentid;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, type, department_id, userid, title, includes, NEWS_TYPE);
-    }
+
 }
