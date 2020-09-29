@@ -1,2 +1,2 @@
-DROP DATABASE jadlet_test;
-DROP DATABASE jadlet;
+DROP DATABASE news;
+DROP DATABASE news_test;

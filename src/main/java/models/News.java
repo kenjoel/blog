@@ -3,69 +3,78 @@ package models;
 import java.util.Objects;
 
 public class News {
-    public int id;
-    public String title;
-    public String content;
-    public int departmentId;
 
-    public News(String title, String content){
+    private int id;
+    private String type;
+    private int department_id;
+    private int userid;
+    private String title;
+    private String includes;
+    private final String NEWS_TYPE="general";
+
+
+
+    public News(String title, String includes, int userid) {
         this.title = title;
-        this.content = content;
+        this.includes = includes;
+        this.userid=userid;
+        this.type= NEWS_TYPE;
+        this.department_id=0;
     }
 
-    public News(String title, String content, int departmentId){
+    public News(String title, String includes,int department_id, int userid){
         this.title = title;
-        this.content = content;
-        this.departmentId = departmentId;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof News)) return false;
-        News news = (News) o;
-        return id == news.id &&
-                departmentId == news.departmentId &&
-                Objects.equals(title, news.title) &&
-                Objects.equals(content, news.content);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, title, content, departmentId);
+        this.includes = includes;
+        this.userid=userid;
+        this.department_id = department_id;
+        this.type="department";
     }
 
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public int getUser_id() {
+        return userid;
+    }
+
+    public String getNews_type() {
+        return type;
+    }
+
+    public int getDepartment_id() {
+        return department_id;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public String getContent() {
-        return content;
+
+    public String getIncludes() {
+        return includes;
     }
 
-
-    public int getDepartmentId() {
-        return departmentId;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        News news = (News) o;
+        return id == news.id &&
+                department_id == news.department_id &&
+                userid == news.userid &&
+                Objects.equals(news, news.type) &&
+                Objects.equals(title, news.title) &&
+                Objects.equals(includes, news.includes) &&
+                Objects.equals(NEWS_TYPE, news.NEWS_TYPE);
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, type, department_id, userid, title, includes, NEWS_TYPE);
     }
-
-    public void setDepartmentId(int departmentId) {
-        this.departmentId = departmentId;
-    }
-
 }
