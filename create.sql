@@ -1,10 +1,32 @@
-CREATE DATABASE news;
-\c news;
-CREATE TABLE  users(id SERIAL PRIMARY KEY, name VARCHAR, position VARCHAR, role VARCHAR, departmentId int);
-CREATE TABLE departments(id SERIAL PRIMARY KEY, name VARCHAR, description VARCHAR, phone VARCHAR, email VARCHAR );
-CREATE TABLE news_col(id SERIAL PRIMARY KEY, title VARCHAR, content VARCHAR, author VARCHAR, departmentid int );
-CREATE TABLE department_users(id SERIAL PRIMARY KEY, userid INTEGER, departmentid INTEGER);
+CREATE DATABASE newsportal;
+\c newsportal;
+CREATE TABLE departments (
+ id SERIAL PRIMARY KEY,
+ name VARCHAR,
+ about VARCHAR,
+ website VARCHAR,
+ email VARCHAR
+);
 
-CREATE DATABASE news_test WITH TEMPLATE news;
+CREATE TABLE users (
+ id SERIAL PRIMARY KEY,
+ name VARCHAR,
+ position VARCHAR,
+ roles VARCHAR
+);
 
+CREATE TABLE news (
+ id SERIAL PRIMARY KEY,
+ headline VARCHAR,
+ content VARCHAR,
+ author VARCHAR,
+ departmentid INTEGER
+);
 
+CREATE TABLE departments_users (
+ id SERIAL PRIMARY KEY,
+ Userid INTEGER,
+ departmentid INTEGER
+);
+
+CREATE DATABASE newsportal_test WITH TEMPLATE newsportal;

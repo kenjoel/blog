@@ -1,22 +1,20 @@
 package dao;
 
-import models.Departments;
 import models.News;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import org.sql2o.Sql2oException;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class Sql2onewsDao implements news {
+public class Sql2oNewsDao implements  news{
 
     private final Sql2o sql2o;
-    public Sql2onewsDao(Sql2o sql2o) { this.sql2o = sql2o; }
+    public Sql2oNewsDao(Sql2o sql2o) { this.sql2o = sql2o; }
 
     @Override
     public void add(News news) {
-        String sql = "INSERT INTO news (headline, content, author, departmentid, createdat, formattedCreatedAt) VALUES (:headline, :content, :author, :departmentid, :createdat, :formattedCreatedAt)"; //if you change your model, be sure to update here as well!
+        String sql = "INSERT INTO news (headline, content, author, departmentid) VALUES (:headline, :content, :author, :departmentid)"; //if you change your model, be sure to update here as well!
         try (Connection con = sql2o.open()) {
             int id = (int) con.createQuery(sql, true)
                     .bind(news)
@@ -29,7 +27,7 @@ public class Sql2onewsDao implements news {
     }
 
     @Override
-    public List<News> getAll() {
+    public  List<News> getAll() {
         try (Connection con = sql2o.open()) {
             return con.createQuery("SELECT * FROM news")
                     .executeAndFetch(News.class);
@@ -68,6 +66,11 @@ public class Sql2onewsDao implements news {
         }
     }
 
+//    @Override
+//    public List<News> getAllNewsByDepartmentSortedNewestToOldest(int departmentid) {
+//        List<News> unsortedNews = getAllNewsByDepartment(departmentid); //calling other method!
+//        List<News> sortedNews = unsortedNews;
+//
+//        return sortedNews;
+//    }
 }
-
-

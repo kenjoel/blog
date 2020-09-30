@@ -1,2 +1,2 @@
-DROP DATABASE news;
-DROP DATABASE news_test;
+DROP DATABASE newsportal_test;
+DROP DATABASE newsportal;

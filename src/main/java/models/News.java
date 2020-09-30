@@ -4,10 +4,10 @@ import java.util.Date;
 import java.util.Objects;
 
 public class News {
+    private int id;
     private String headline;
     private String content;
     private String author;
-    private int id;
     private int departmentid; //will be used to connect Department to News (one-to-many)
 
     public News(String headline, String content, String author, int departmentid) {

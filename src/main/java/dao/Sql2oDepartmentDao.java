@@ -1,21 +1,24 @@
+
 package dao;
 
+
 import models.Departments;
-import models.News;
 import models.User;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import org.sql2o.Sql2oException;
+
 import java.util.ArrayList;
 import java.util.List;
 
-
-import org.sql2o.Sql2o;
-
 public class Sql2oDepartmentDao implements department {
 
+
     private final Sql2o sql2o;
-    public Sql2oDepartmentDao(Sql2o sql2o) { this.sql2o = sql2o; }
+
+    public Sql2oDepartmentDao(Sql2o sql2o) {
+        this.sql2o = sql2o;
+    }
 
     @Override
     public void add(Departments department) {
@@ -30,6 +33,7 @@ public class Sql2oDepartmentDao implements department {
             System.out.println(ex);
         }
     }
+
     @Override
     public List<Departments> getAll() {
         try (Connection con = sql2o.open()) {
@@ -50,21 +54,21 @@ public class Sql2oDepartmentDao implements department {
     }
 
     @Override
-    public void addDepartmentToUser(Departments department, User user){
+    public void addDepartmentToUser(Departments department, User user) {
         String sql = "INSERT INTO departments_users (departmentid, Userid) VALUES (:departmentid, :Userid)";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql)
                     .addParameter("departmentid", department.getId())
                     .addParameter("Userid", user.getId())
                     .executeUpdate();
-        } catch (Sql2oException ex){
+        } catch (Sql2oException ex) {
             System.out.println(ex);
         }
 
     }
 
     @Override
-    public List<User> getAllUsersByDepartment(int departmentid){
+    public List<User> getAllUsersByDepartment(int departmentid) {
         ArrayList<User> users = new ArrayList<>();
 
         String joinQuery = "SELECT userid FROM departments_users WHERE departmentid = :departmentid";
@@ -73,14 +77,14 @@ public class Sql2oDepartmentDao implements department {
             List<Integer> allusersIds = con.createQuery(joinQuery)
                     .addParameter("departmentid", departmentid)
                     .executeAndFetch(Integer.class);
-            for (Integer userId : allusersIds){
+            for (Integer userId : allusersIds) {
                 String userQuery = "SELECT * FROM users WHERE id = :userid";
                 users.add(
                         con.createQuery(userQuery)
                                 .addParameter("userid", userId)
                                 .executeAndFetchFirst(User.class));
             }
-        } catch (Sql2oException ex){
+        } catch (Sql2oException ex) {
             System.out.println(ex);
         }
         return users;
@@ -88,9 +92,9 @@ public class Sql2oDepartmentDao implements department {
 
 
     @Override
-    public void update(int id, String name, String about, String website, String email){
+    public void update(int id, String name, String about, String website, String email) {
         String sql = "UPDATE departments SET (id,name, about, website, email)=(:id, :name, :about, :website, :email) WHERE id=:id";
-        try(Connection con = sql2o.open()){
+        try (Connection con = sql2o.open()) {
             con.createQuery(sql)
                     .addParameter("name", name)
                     .addParameter("about", about)
@@ -126,6 +130,4 @@ public class Sql2oDepartmentDao implements department {
             System.out.println(ex);
         }
     }
-    }
-
-
+}

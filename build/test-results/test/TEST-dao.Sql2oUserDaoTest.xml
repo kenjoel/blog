@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="dao.Sql2oUserDaoTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2020-09-30T09:34:12" hostname="moringa-ThinkPad-X260" time="1.541">
+  <properties/>
+  <testcase name="addedusersAreReturnedFromGetAll" classname="dao.Sql2oUserDaoTest" time="0.602"/>
+  <testcase name="deleteingDepartmentAlsoUpdatesJoinTable" classname="dao.Sql2oUserDaoTest" time="0.287"/>
+  <testcase name="addUserToDepartmentAddsTypeCorrectly" classname="dao.Sql2oUserDaoTest" time="0.295"/>
+  <testcase name="clearAll" classname="dao.Sql2oUserDaoTest" time="0.101"/>
+  <testcase name="addingFoodSetsId" classname="dao.Sql2oUserDaoTest" time="0.081"/>
+  <testcase name="nousersReturnsEmptyList" classname="dao.Sql2oUserDaoTest" time="0.068"/>
+  <testcase name="deleteByIdDeletesCorrectuser" classname="dao.Sql2oUserDaoTest" time="0.102"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
