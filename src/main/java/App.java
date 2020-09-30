@@ -41,7 +41,8 @@ public class App {
 //        String connectionString = "jdbc:h2:~/newsportal.db;INIT=RUNSCRIPT from 'classpath:DB/create.sql'";
 //        Sql2o sql2o = new Sql2o(connectionString, "", "");
 
-
+//heroku pg:push local_database_name postgresql-corrugated-80870 --app your-app-name,
+        //heroku addons:create heroku-postgresql:hobby-dev --app joelnews
 
 
         String connectionString = "jdbc:postgresql://ec2-34-197-212-240.compute-1.amazonaws.com:5432/ddttbhua5hnvau"; //connect to newsportal, not newsportal_test!

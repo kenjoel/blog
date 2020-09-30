@@ -41,12 +41,12 @@ public class Sql2oDepartmentDaoTest {
     }
 
 
-    @Test
-    public void  testSaveWorks(){
-        Departments department = new Departments("DailyNation","Fighting Corruption", "www.DailyNation.com", "DailyNation@nation.com");
-        DepartmentDao.add(department);
-        assertEquals(1, DepartmentDao.getAll().size());
-    }
+//    @Test
+//    public void  testSaveWorks(){
+//        Departments department = new Departments("DailyNation","Fighting Corruption", "www.DailyNation.com", "DailyNation@nation.com");
+//        DepartmentDao.add(department);
+//        assertEquals(1, DepartmentDao.getAll().size());
+//    }
 
     @Test
     public void DepartmentReturnsusersCorrectly() throws Exception {

@@ -50,11 +50,11 @@ public class Sql2oNewsDaoTest {
 //    }
 
 
-    @Test
-    public void addingnewsetsId() throws Exception {
-        News testNews = setupNews();
-        assertEquals(1, testNews.getId());
-    }
+//    @Test
+//    public void addingnewsetsId() throws Exception {
+//        News testNews = setupNews();
+//        assertEquals(1, testNews.getId());
+//    }
 
     @Test
     public void getAll() throws Exception {

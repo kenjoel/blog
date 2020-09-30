@@ -16,7 +16,7 @@ dao/Sql2oUserDao.java
  dao.Sql2oUserDao
 dao/Sql2oNewsDao.java
  dao.Sql2oNewsDao
-App.java
- App
 dao/news.java
  dao.news
+App.java
+ App
