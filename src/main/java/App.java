@@ -44,8 +44,8 @@ public class App {
 
 
 
-        String connectionString = "jdbc:postgresql://localhost:5432/newsportal"; //connect to newsportal, not newsportal_test!
-        Sql2o sql2o = new Sql2o(connectionString, "moringa", "://postgres");  //Ubuntu Sql2o sql2o = new Sql2o(connectionString, "user", "1234");
+        String connectionString = "jdbc:postgresql://ec2-34-197-212-240.compute-1.amazonaws.com:5432/ddttbhua5hnvau"; //connect to newsportal, not newsportal_test!
+        Sql2o sql2o = new Sql2o(connectionString, "jharusqetiuhgh", "://postgres");  //Ubuntu Sql2o sql2o = new Sql2o(connectionString, "user", "1234");
 
         DepartmentDao = new Sql2oDepartmentDao(sql2o);
         userDao = new Sql2oUserDao(sql2o);
