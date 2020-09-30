@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="dao.Sql2onewsDaoTest" tests="5" skipped="0" failures="5" errors="0" timestamp="2020-09-30T03:16:03" hostname="moringa-ThinkPad-X260" time="0.43">
+<testsuite name="dao.Sql2onewsDaoTest" tests="5" skipped="0" failures="5" errors="0" timestamp="2020-09-30T03:44:12" hostname="moringa-ThinkPad-X260" time="0.33">
   <properties/>
-  <testcase name="getAllNewsByDepartment" classname="dao.Sql2onewsDaoTest" time="0.265">
+  <testcase name="getAllNewsByDepartment" classname="dao.Sql2onewsDaoTest" time="0.146">
     <failure message="org.sql2o.Sql2oException: Database error: ERROR: relation &quot;news&quot; does not exist&#10;  Position: 15" type="org.sql2o.Sql2oException">org.sql2o.Sql2oException: Database error: ERROR: relation &quot;news&quot; does not exist
   Position: 15
 	at org.sql2o.Query$ResultSetIterableBase.&lt;init&gt;(Query.java:332)
@@ -74,7 +74,7 @@ Caused by: org.postgresql.util.PSQLException: ERROR: relation &quot;news&quot; d
 	... 56 more
 </failure>
   </testcase>
-  <testcase name="getAll" classname="dao.Sql2onewsDaoTest" time="0.053">
+  <testcase name="getAll" classname="dao.Sql2onewsDaoTest" time="0.056">
     <failure message="org.sql2o.Sql2oException: Database error: ERROR: relation &quot;news&quot; does not exist&#10;  Position: 15" type="org.sql2o.Sql2oException">org.sql2o.Sql2oException: Database error: ERROR: relation &quot;news&quot; does not exist
   Position: 15
 	at org.sql2o.Query$ResultSetIterableBase.&lt;init&gt;(Query.java:332)
@@ -147,7 +147,7 @@ Caused by: org.postgresql.util.PSQLException: ERROR: relation &quot;news&quot; d
 	... 56 more
 </failure>
   </testcase>
-  <testcase name="addingnewsetsId" classname="dao.Sql2onewsDaoTest" time="0.017">
+  <testcase name="addingnewsetsId" classname="dao.Sql2onewsDaoTest" time="0.02">
     <failure message="java.lang.AssertionError: expected:&lt;1&gt; but was:&lt;0&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;1&gt; but was:&lt;0&gt;
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.junit.Assert.failNotEquals(Assert.java:834)
@@ -206,7 +206,7 @@ Caused by: org.postgresql.util.PSQLException: ERROR: relation &quot;news&quot; d
 	at java.base/java.lang.Thread.run(Thread.java:834)
 </failure>
   </testcase>
-  <testcase name="clearAll" classname="dao.Sql2onewsDaoTest" time="0.051">
+  <testcase name="clearAll" classname="dao.Sql2onewsDaoTest" time="0.055">
     <failure message="org.sql2o.Sql2oException: Database error: ERROR: relation &quot;news&quot; does not exist&#10;  Position: 15" type="org.sql2o.Sql2oException">org.sql2o.Sql2oException: Database error: ERROR: relation &quot;news&quot; does not exist
   Position: 15
 	at org.sql2o.Query$ResultSetIterableBase.&lt;init&gt;(Query.java:332)
@@ -279,7 +279,7 @@ Caused by: org.postgresql.util.PSQLException: ERROR: relation &quot;news&quot; d
 	... 56 more
 </failure>
   </testcase>
-  <testcase name="deleteById" classname="dao.Sql2onewsDaoTest" time="0.043">
+  <testcase name="deleteById" classname="dao.Sql2onewsDaoTest" time="0.052">
     <failure message="org.sql2o.Sql2oException: Database error: ERROR: relation &quot;news&quot; does not exist&#10;  Position: 15" type="org.sql2o.Sql2oException">org.sql2o.Sql2oException: Database error: ERROR: relation &quot;news&quot; does not exist
   Position: 15
 	at org.sql2o.Query$ResultSetIterableBase.&lt;init&gt;(Query.java:332)

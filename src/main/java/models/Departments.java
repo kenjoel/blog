@@ -73,11 +73,12 @@ import java.util.Objects;
 
 public class Departments {
 
+    private int id;
     private String name;
     private String about;
     private String phone;
     private String email;
-    private int id;
+
 
 
     public Departments(String name, String about) {
