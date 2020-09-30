@@ -75,7 +75,7 @@ public class Departments {
 
     private String name;
     private String about;
-    private String website;
+    private String phone;
     private String email;
     private int id;
 
@@ -83,14 +83,14 @@ public class Departments {
     public Departments(String name, String about) {
         this.name = name;
         this.about = about;
-        this.website = "no website listed";
+        this.phone = "no phone listed";
         this.email = "no email available";
     }
 
     public Departments(String name, String about, String website, String email) {
         this.name = name;
         this.about = about;
-        this.website = website;
+        this.phone = website;
         this.email = email;
     }
 
@@ -104,13 +104,13 @@ public class Departments {
         return id == that.id &&
                 Objects.equals(name, that.name) &&
                 Objects.equals(about, that.about) &&
-                Objects.equals(website, that.website) &&
+                Objects.equals(phone, that.phone) &&
                 Objects.equals(email, that.email);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, about, website, email, id);
+        return Objects.hash(name, about, phone, email, id);
     }
 
 
@@ -126,7 +126,7 @@ public class Departments {
 
 
     public String getWebsite() {
-        return website;
+        return phone;
     }
 
     public String getEmail() {
@@ -147,7 +147,7 @@ public class Departments {
     }
 
     public void setWebsite(String website) {
-        this.website = website;
+        this.phone = website;
     }
 
     public void setEmail(String email) {
