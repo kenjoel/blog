@@ -9,15 +9,15 @@ public interface news {
 
     //create
     void add(News news);
-    void addNewsToDepartment(News news, Departments departments);
+
+    //read
+    List<News> getAll();
+    List<News> getAllNewsByDepartment(int departmentid);
 
 
-    //Read
-    News findNewsById(int userid);
-    List<News>findNewsByDepartmentId(int departmentid);
-    List<News>getAll();
+    //update
 
-    //Delete
-    void deleteById(int userid);
+    //delete
+    void deleteById(int id);
     void clearAll();
 }

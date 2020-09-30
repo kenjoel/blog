@@ -44,100 +44,64 @@ public class Sql2onewsDaoTest {
     }
 
     @Test
-    public void addingFoodSetsId() throws Exception {
+    public void addingnewsetsId() throws Exception {
         News testNews = setupNews();
-        int originalnewstypeId = testNews.getId();
-        newsDao.add(testNews);
-        assertNotEquals(originalnewstypeId,testNews.getId());
+        assertEquals(1, testNews.getId());
     }
 
     @Test
-    public void addedNewsAreReturnedFromGetAll() throws Exception {
-        News testNewstype = setupNews();
-        newsDao.add(testNewstype);
+    public void getAll() throws Exception {
+        News news1 = setupNews();
+        News news2 = setupNews();
+        assertEquals(2, newsDao.getAll().size());
+    }
+
+    @Test
+    public void getAllNewsByDepartment() throws Exception {
+        Departments testDepartment = setupDepartment();
+        Departments otherDepartment = setupDepartment(); //add in some extra data to see if it interferes
+        News news1 = setupNewsForDepartment(testDepartment);
+        News news2 = setupNewsForDepartment(testDepartment);
+        News newsForOtherDepartment = setupNewsForDepartment(otherDepartment);
+        assertEquals(2, newsDao.getAllNewsByDepartment(testDepartment.getId()).size());
+    }
+
+    @Test
+    public void deleteById() throws Exception {
+        News testNews = setupNews();
+        News otherNews = setupNews();
+        assertEquals(2, newsDao.getAll().size());
+        newsDao.deleteById(testNews.getId());
         assertEquals(1, newsDao.getAll().size());
     }
 
     @Test
-    public void noNewstypesReturnsEmptyList() throws Exception {
-        assertEquals(0, newsDao.getAll().size());
-    }
-
-    @Test
-    public void deleteByIdDeletesCorrectNewstype() throws Exception {
-        News news = setupDepartmentNews();
-        newsDao.add(news);
-        newsDao.deleteById(news.getId());
-        assertEquals(0, newsDao.getAll().size());
-    }
-
-    @Test
     public void clearAll() throws Exception {
-        News testNewstype = setupNews();
-        newsDao.add(testNewstype);
-        News otherNewstype = setupDepartmentNews();
-        newsDao.add(otherNewstype);
+        News testNews = setupNews();
+        News otherNews = setupNews();
         newsDao.clearAll();
         assertEquals(0, newsDao.getAll().size());
     }
 
-    @Test
-    public void addFoodTypeToRestaurantAddsTypeCorrectly() throws Exception {
+    //helpers
 
-        News testNews = setupNews();
-        News altNews = setupDepartmentNews();
-
-        newsDao.add(testNews);
-        newsDao.add(altNews);
-
-        Departments departments = setupDepartment();
-
-        departmentDao.addDepartment(departments);
-
-        newsDao.addNewsToDepartment(testNews, departments);
-        departmentDao.addNewstoDepartment(departments, altNews);
-
-        assertEquals(2, departmentDao.getNewsByDepartment(departments.getId()).size());
-    }
-
-    @Test
-    public void deleteingRestaurantAlsoUpdatesJoinTable() throws Exception {
-        News news  = setupNews();
-        newsDao.add(news);
-
-        Departments testDepartment = setupDepartment();
-        departmentDao.addDepartment(testDepartment);
-
-        News altNews = setupDepartmentNews();
-        newsDao.add(altNews);
-
-        newsDao.addNewsToDepartment(altNews,testDepartment);
-        departmentDao.addNewstoDepartment(testDepartment, news);
-
-//        departmentDao.deleteById(testDepartment.getId());
-        assertEquals(0, newsDao.findNewsByDepartmentId(testDepartment.getId()).size());
-    }
-
-    // helpers
-
-    public News setupNews(){
-        News news = new News("The Great White","The great white shark",8);
-        return news;
-    }
-
-    public News setupDepartmentNews (){
-        News news = new News(" Omena", "214 NE Safaricom", 1,2);
+    public News setupNews() {
+        News news = new News("Kid Gets Whacked", "Kimani", "Joel", 555);
         newsDao.add(news);
         return news;
     }
 
-    public Departments setupDepartment (){
-        Departments departments = new Departments("Fish Omena", "214 NE Safaricom", 8);
-        departmentDao.addDepartment(departments);
-        return departments;
+    public News setupNewsForDepartment(Departments department) {
+        News news = new News("Kid Gets Whacked", "Kimani", "Joel", department.getId());
+        newsDao.add(news);
+        return news;
     }
 
-
+    public Departments setupDepartment() {
+        Departments department = new Departments("DailyNation","Fighting Corruption", "www.DailyNation.com", "DailyNation@nation.com");
+        departmentDao.add(department);
+        return department;
+    }
 //    oduor.lovine@gmail.com
 //    gokumu12@gmail.com
 //    ianwilbuts@gmail.com

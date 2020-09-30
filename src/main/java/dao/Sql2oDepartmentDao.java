@@ -2,6 +2,7 @@ package dao;
 
 import models.Departments;
 import models.News;
+import models.User;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import org.sql2o.Sql2oException;
@@ -17,7 +18,7 @@ public class Sql2oDepartmentDao implements department {
     public Sql2oDepartmentDao(Sql2o sql2o) { this.sql2o = sql2o; }
 
     @Override
-    public void add(Department department) {
+    public void add(Departments department) {
         String sql = "INSERT INTO departments (name, about, website, email) VALUES (:name, :about, :website, :email)";
         try (Connection con = sql2o.open()) {
             int id = (int) con.createQuery(sql, true)
@@ -30,26 +31,26 @@ public class Sql2oDepartmentDao implements department {
         }
     }
     @Override
-    public List<Department> getAll() {
+    public List<Departments> getAll() {
         try (Connection con = sql2o.open()) {
             System.out.println(con.createQuery("SELECT * FROM departments")
-                    .executeAndFetch(Department.class));
+                    .executeAndFetch(Departments.class));
             return con.createQuery("SELECT * FROM departments")
-                    .executeAndFetch(Department.class);
+                    .executeAndFetch(Departments.class);
         }
     }
 
     @Override
-    public Department findById(int departmentid) {
+    public Departments findById(int departmentid) {
         try (Connection con = sql2o.open()) {
             return con.createQuery("SELECT * FROM departments WHERE id = :id")
                     .addParameter("id", departmentid)
-                    .executeAndFetchFirst(Department.class);
+                    .executeAndFetchFirst(Departments.class);
         }
     }
 
     @Override
-    public void addDepartmentToUser(Departments department, user user){
+    public void addDepartmentToUser(Departments department, User user){
         String sql = "INSERT INTO departments_users (departmentid, Userid) VALUES (:departmentid, :Userid)";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql)
@@ -63,8 +64,8 @@ public class Sql2oDepartmentDao implements department {
     }
 
     @Override
-    public List<user> getAllUsersByDepartment(int departmentid){
-        ArrayList<user> users = new ArrayList<>();
+    public List<User> getAllUsersByDepartment(int departmentid){
+        ArrayList<User> users = new ArrayList<>();
 
         String joinQuery = "SELECT userid FROM departments_users WHERE departmentid = :departmentid";
 
@@ -77,7 +78,7 @@ public class Sql2oDepartmentDao implements department {
                 users.add(
                         con.createQuery(userQuery)
                                 .addParameter("userid", userId)
-                                .executeAndFetchFirst(user.class));
+                                .executeAndFetchFirst(User.class));
             }
         } catch (Sql2oException ex){
             System.out.println(ex);

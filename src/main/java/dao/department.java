@@ -2,6 +2,7 @@ package dao;
 
 import models.Departments;
 import models.News;
+import models.User;
 
 import java.util.List;
 
@@ -22,11 +23,11 @@ public interface department {
 
     //create
     void add(Departments department);
-    void addDepartmentToUser(Departments department, user user);
+    void addDepartmentToUser(Departments department, User user);
 
     //read
     List<Departments> getAll();
-    List<user> getAllUsersByDepartment(int departmentid);
+    List<User> getAllUsersByDepartment(int departmentid);
 
 
     Departments  findById(int id);

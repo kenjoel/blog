@@ -1,40 +1,40 @@
 package models;
 
 import java.util.Objects;
-import org.h2.engine.User;
 
-import java.util.Objects;
 
 public class User {
-    public class user {
-        private String name;
-        private int id;
-        private String position;
-        private String roles;
 
-        public user(String name, String position, String roles) {
-            this.name = name;
-            this.position = position;
-            this.roles = roles;
-        }
 
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (!(o instanceof user)) return false;
-            user user = (models.user) o;
-            return id == user.id &&
-                    Objects.equals(name, user.name) &&
-                    Objects.equals(position, user.position) &&
-                    Objects.equals(roles, user.roles);
-        }
+    private int id;
+    private String name;
+    private String position;
+    private String roles;
 
-        @Override
-        public int hashCode() {
-            return Objects.hash(name, id, position, roles);
-        }
+    public User(String name, String position, String roles) {
+        this.name = name;
+        this.position = position;
+        this.roles = roles;
+    }
 
-        //Getters n setters
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+        User user = (User) o;
+        return id == user.id &&
+                Objects.equals(name, user.name) &&
+                Objects.equals(position, user.position) &&
+                Objects.equals(roles, user.roles);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, position, roles);
+    }
+
+
+    //Getters n setters
 
 
     public String getName() {
@@ -68,5 +68,4 @@ public class User {
     public String getPosition() {
         return position;
     }
-}
 }
